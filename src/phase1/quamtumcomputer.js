@@ -22,7 +22,7 @@ export function runQuantumComputing() {
   if (activeCount === 0) return;
 
   // 判定ロジック：全アクティブチップの振幅の和が最大値の 65% を超えた瞬間
-  const threshold = activeCount * 0.7;
+  const threshold = activeCount * 0.75;
 
   if (totalAmplitude > threshold) {
     const btn = document.getElementById("btnQcompute");
