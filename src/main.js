@@ -22,7 +22,7 @@ export function init() {
   }, 10);
 
   window.mainLoopId = setInterval(mainEngine, 5000);
-  startQuantumLoop();
+  window.quantumLoopId = startQuantumLoop();
   console.log("PaperClip Automation: Dispatcher Engine Started.");
 }
 
