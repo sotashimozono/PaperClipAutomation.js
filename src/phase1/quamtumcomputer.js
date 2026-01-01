@@ -1,39 +1,41 @@
 import { safeClick } from "../core/utils.js";
 
 /**
- * 量子計算の自動クリック（活性化自由度追従型）
+ * 量子計算の自動クリック：実測振幅適応版
  */
 export function runQuantumComputing() {
-  const qComp = document.getElementById("qComputing");
-  if (!qComp || qComp.style.display === "none") return;
+  const container = document.getElementById("qComputing");
+  if (!container || container.style.display === "none") return;
 
-  const allPhotons = qComp.getElementsByClassName("qChip");
-  let activePhotons = [];
-  let currentTotalOpacity = 0;
+  const chips = container.getElementsByClassName("qChip");
+  let totalAmplitude = 0;
+  let activeCount = 0;
 
-  // 1. 表示されている（計算に寄与している）チップだけを抽出
-  for (let p of allPhotons) {
-    if (window.getComputedStyle(p).display !== "none") {
-      activePhotons.push(p);
-      currentTotalOpacity += parseFloat(window.getComputedStyle(p).opacity);
+  for (let chip of chips) {
+    // 1. アクティブなチップのみ計算対象とする
+    if (window.getComputedStyle(chip).display !== "none") {
+      // 2. DOMのstyle属性から直接数値を抽出（負の値もそのまま取得）
+      const opacity = parseFloat(chip.style.opacity);
+      if (!isNaN(opacity)) {
+        totalAmplitude += opacity;
+        activeCount++;
+      }
     }
   }
 
-  const n = activePhotons.length; // 実際に動いているチップ数
-  if (n === 0) return;
+  if (activeCount === 0) return;
 
-  // 2. 物理モデルに基づいた動的しきい値
-  // 全ての cos が 1 に近い「強め合いの干渉」の瞬間を狙う
-  // 借金返済中は 0.9 (90%) 程度に設定し、確実にプラスを狙うのが Robust
-  const thresholdRatio = 0.9;
-  const dynamicThreshold = n * thresholdRatio;
+  // 3. 物理モデルに基づいた判定
+  // qOps ∝ sum(cos(wt))。全チップの振幅の和が「山（正のピーク）」の時だけ叩く
+  // 借金返済中なので、閾値は厳しめに設定（アクティブ数の 60〜80% 以上）
+  const threshold = activeCount * 0.7;
 
-  if (currentTotalOpacity > dynamicThreshold) {
+  if (totalAmplitude > threshold) {
     const btn = document.getElementById("btnQcompute");
     if (btn && !btn.disabled) {
       btn.click();
-      // デバッグ用：干渉の強さを表示
-      // console.log(`[Quantum] Coherence: ${(currentTotalOpacity/n*100).toFixed(1)}% (N=${n})`);
+      // コンソールで干渉の状態を確認
+      // console.log(`[Quantum] Interference Peak: ${totalAmplitude.toFixed(2)} / ${activeCount}`);
     }
   }
 }
