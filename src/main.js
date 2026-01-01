@@ -13,6 +13,7 @@ function mainEngine() {
     // runPhase2Logic();
   }
 }
+
 export function init() {
   if (window.mainLoopId) clearInterval(window.mainLoopId);
   if (window.clickLoopId) clearInterval(window.clickLoopId);
