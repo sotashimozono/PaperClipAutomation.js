@@ -17,7 +17,8 @@ export const getValSafe = (id) => {
 export const getFundsSafe = () => {
   const el = document.getElementById("funds");
   if (!el) return 0;
-  return parseFloat(el.innerText.replace("$", ""));
+  const val = parseFloat(el.innerText.replace(/[^0-9.]/g, ""));
+  return isNaN(val) ? 0 : val;
 };
 
 export const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
