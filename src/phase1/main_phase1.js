@@ -14,12 +14,12 @@ export function runPhase1Logic() {
   const wire = getValSafe("wire");
   const wireCost = getValSafe("wireCost");
 
+  ProjectManager.executeAll();
+  runTrustLogic();
+  optimizeInvestment(funds, unsold, clipRate);
+
   if (wire !== null && wire < CONFIG.WIRE_RESERVE && funds >= wireCost) {
     safeClick("btnBuyWire");
   }
-
   optimize_price(unsold, demand, clipRate, funds, wireCost);
-  runTrustLogic();
-  optimizeInvestment(funds, unsold, clipRate);
-  ProjectManager.executeAll();
 }
