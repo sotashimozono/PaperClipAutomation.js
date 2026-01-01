@@ -19,38 +19,38 @@
 ## 補助スクリプト
 
 以下をconsoleから実行すると最新版のコードを走らせることができる
+
 ```javascript
 async function loadLatestAutomation() {
-    const user = 'sotashimozono';
-    const repo = 'PaperClipAutomation.js';
-    const branch = 'main';
+  const user = "sotashimozono";
+  const repo = "PaperClipAutomation.js";
+  const branch = "main";
 
-    try {
-        const apiResponse = await fetch(
-            `https://api.github.com/repos/${user}/${repo}/commits/${branch}?t=${Date.now()}`,
-            { cache: "no-store" }
-        );
-        
-        const commitData = await apiResponse.json();
-        const sha = commitData.sha;
+  try {
+    const apiResponse = await fetch(
+      `https://api.github.com/repos/${user}/${repo}/commits/${branch}?t=${Date.now()}`,
+      { cache: "no-store" },
+    );
 
-        console.log(`最新SHAを取得: ${sha.substring(0, 7)}`);
+    const commitData = await apiResponse.json();
+    const sha = commitData.sha;
 
-        const scriptUrl = `https://cdn.jsdelivr.net/gh/${user}/${repo}@${sha}/src/main.js?t=${Date.now()}`;
-        
-        const module = await import(scriptUrl);
-        
-        if (module && typeof module.init === 'function') {
-            module.init();
-            console.log("最新版の起動に成功！");
-        }
-    } catch (err) {
-        console.error("ロード失敗:", err);
+    console.log(`最新SHAを取得: ${sha.substring(0, 7)}`);
+
+    const scriptUrl = `https://cdn.jsdelivr.net/gh/${user}/${repo}@${sha}/src/main.js?t=${Date.now()}`;
+
+    const module = await import(scriptUrl);
+
+    if (module && typeof module.init === "function") {
+      module.init();
+      console.log("最新版の起動に成功！");
     }
+  } catch (err) {
+    console.error("ロード失敗:", err);
+  }
 }
 // 実行
 loadLatestAutomation();
-
 
 /**
  * ゲームの時間を加速させるハック
@@ -76,5 +76,5 @@ function activateTimeWarp(multiplier) {
     "color: #ff00ff; font-weight: bold;",
   );
 }
-activateTimeWarp(30000)
+activateTimeWarp(30000);
 ```
