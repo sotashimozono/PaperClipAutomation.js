@@ -25,7 +25,7 @@ export function runQuantumComputing() {
   // 2. 物理モデルに基づいた動的しきい値
   // 全ての cos が 1 に近い「強め合いの干渉」の瞬間を狙う
   // 借金返済中は 0.9 (90%) 程度に設定し、確実にプラスを狙うのが Robust
-  const thresholdRatio = 0.9; 
+  const thresholdRatio = 0.9;
   const dynamicThreshold = n * thresholdRatio;
 
   if (currentTotalOpacity > dynamicThreshold) {
