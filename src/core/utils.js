@@ -9,8 +9,9 @@ export const safeClick = (id) => {
 
 export const getValSafe = (id) => {
   const el = document.getElementById(id);
-  if (!el) return null;
-  return parseInt(el.innerText.replace(/[^0-9.]/g, "")) || 0;
+  if (!el) return 0;
+  const val = parseFloat(el.innerText.replace(/[^0-9.]/g, ''));
+  return isNaN(val) ? 0 : val;
 };
 
 export const getFundsSafe = () => {
