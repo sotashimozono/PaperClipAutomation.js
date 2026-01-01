@@ -21,7 +21,7 @@ export function optimize_price(unsold, demand, clipRate, funds, wireCost) {
   const targetInventory = Math.max(clipRate * 10, 500);
 
   // 2. 在庫フィードバックによる価格スキャン
-  if (unsold > targetInventory * 2) {
+  if (unsold > targetInventory) {
     // 在庫過多：需要不足。価格を下げて J_out を増やす
     if (currentPrice > CONFIG.SAFE_PRICE_FLOOR) {
       if (safeClick("btnLowerPrice")) {
@@ -29,7 +29,7 @@ export function optimize_price(unsold, demand, clipRate, funds, wireCost) {
         console.log(`[Price] Down: Inventory(${unsold}) is too high.`);
       }
     }
-  } else if (unsold < targetInventory * 0.5) {
+  } else if (unsold < targetInventory && demand > 0) {
     // 在庫不足：需要過多。価格を上げて単価利益を最大化する
     if (safeClick("btnRaisePrice")) {
       lastPriceChange = now;
