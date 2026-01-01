@@ -48,7 +48,8 @@ export function runStrategicModeling() {
   if (picker) {
     // まだ TIT FOR TAT がない場合は GREEDY (強欲) を選択
     // 解放されたら "1" (TIT FOR TAT) に切り替えるのが効率的です
-    if (picker.value === "10") { // 10 はデフォルトの "Pick a Strat"
+    if (picker.value === "10") {
+      // 10 はデフォルトの "Pick a Strat"
       picker.value = "GREEDY";
     }
   }
