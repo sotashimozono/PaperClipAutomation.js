@@ -7,7 +7,6 @@ function getMinRequiredOps() {
     for (let btn of projects) {
         if (btn.style.display !== 'none') {
             const text = btn.innerText;
-            // あなたの気づき：New Sloganなどの複合コストに対応
             const match = text.match(/([\d,]+)\s+ops/);
             if (match) {
                 const ops = parseInt(match[1].replace(/,/g, ''));

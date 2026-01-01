@@ -2,7 +2,7 @@ import { safeClick } from '../core/utils.js';
 import { PAPERS_CONFIG } from '../core/config.js';
 
 let lastPriceChange = Date.now();
-const PRICE_COOLDOWN = 1500; // 振動を防ぐための慣性（ms）
+const PRICE_COOLDOWN = 1500;
 
 /**
  * 在庫量に基づいた動的価格調整
@@ -16,17 +16,11 @@ export function optimize_price(unsold, demand, clipRate, funds, wireCost) {
     if (!priceEl) return;
     const currentPrice = parseFloat(priceEl.innerText.replace('$ ', ''));
 
-    // 1. 緊急流動性確保
-    if (funds < wireCost && unsold > 0) {
-        if (safeClick('btnLowerPrice')) lastPriceChange = now;
-        return;
-    }
-
-    // 2. 目標在庫の設定（定常状態の維持）
+    // 1. 目標在庫の設定（定常状態の維持）
     // I_target = 10秒分の生産量。ただし最低500個は確保
     const targetInventory = Math.max(clipRate * 10, 500);
 
-    // 3. 在庫フィードバックによる価格スキャン
+    // 2. 在庫フィードバックによる価格スキャン
     if (unsold > targetInventory * 2) {
         // 在庫過多：需要不足。価格を下げて J_out を増やす
         if (currentPrice > PAPERS_CONFIG.SAFE_PRICE_FLOOR) {

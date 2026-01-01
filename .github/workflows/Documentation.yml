@@ -11,10 +11,10 @@ jobs:
       - name: Install and Build
         run: |
           npm install
-          npm run docs  # ここで makedocs 相当を実行
+          npm run docs
           
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: docs  # 生成されたドキュメントがあるフォルダ
-          branch: gh-pages # デプロイ先
+          folder: docs
+          branch: gh-pages
