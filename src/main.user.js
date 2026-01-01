@@ -9,13 +9,16 @@
 (function () {
   "use strict";
 
-  const prodUrl =
-    "https://cdn.jsdelivr.net/gh/sotashimozono/PaperClipAutomation.js@main/src/main.js";
+  // キャッシュ対策のためタイムスタンプを付与
+  const prodUrl = `https://cdn.jsdelivr.net/gh/sotashimozono/PaperClipAutomation.js@main/src/main.js?t=${Date.now()}`;
 
   import(prodUrl)
     .then((module) => {
-      if (window.PaperClipAutomation && window.PaperClipAutomation.init) {
-        window.PaperClipAutomation.init();
+      // module.init が存在するか確認して実行
+      if (typeof module.init === 'function') {
+        module.init();
+      } else {
+        console.error("module.init が見つかりません。export されているか確認してください。");
       }
     })
     .catch((err) => {
