@@ -18,7 +18,7 @@ export function runPhase1Logic() {
   runTrustLogic();
   optimizeInvestment(funds, unsold, clipRate);
 
-  if ((wire !== null) && (wire < CONFIG.WIRE_RESERVE) && (funds >= wireCost)) {
+  if (wire !== null && wire < CONFIG.WIRE_RESERVE && funds >= wireCost) {
     safeClick("btnBuyWire");
   }
   optimize_price(unsold, demand, clipRate, funds, wireCost);

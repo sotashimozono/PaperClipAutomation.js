@@ -20,20 +20,20 @@ export function optimizeInvestment(funds, unsold, clipRate) {
   const isSupplyOverwhelming = unsold > targetInventory;
 
   if (isSupplyOverwhelming) {
-    if (adCost && (budget >= adCost)) {
+    if (adCost && budget >= adCost) {
       safeClick("btnExpandMarketing");
     }
     return;
   }
 
   // --- 通常投資：効率の高い方から購入 ---
-  if (megaCost && (budget >= megaCost)) {
+  if (megaCost && budget >= megaCost) {
     safeClick("btnBuyMegaClipper");
-  } else if (clipperCost && (budget >= clipperCost)) {
+  } else if (clipperCost && budget >= clipperCost) {
     safeClick("btnMakeClipper");
   }
 
-  if (adCost && (budget >= adCost)) {
+  if (adCost && budget >= adCost) {
     safeClick("btnExpandMarketing");
   }
 }

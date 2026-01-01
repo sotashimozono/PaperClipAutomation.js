@@ -30,7 +30,7 @@ export function optimize_price(unsold, demand, clipRate, funds, wireCost) {
         console.log(`[Price] Down: Inventory(${unsold}) is too high.`);
       }
     }
-  } else if ((unsold < targetInventory) && (demand > 0)) {
+  } else if (unsold < targetInventory && demand > 0) {
     // 在庫不足：需要過多。価格を上げて単価利益を最大化する
     if (safeClick("btnRaisePrice")) {
       lastPriceChange = now;
