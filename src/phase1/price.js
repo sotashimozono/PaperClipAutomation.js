@@ -18,7 +18,7 @@ export function optimize_price(unsold, demand, clipRate, funds, wireCost) {
 
   // 1. 目標在庫の設定（定常状態の維持）
   // I_target = 10秒分の生産量。ただし最低500個は確保
-  const targetInventory = Math.max(clipRate * 10, 500);
+  const targetInventory = Math.max(clipRate * 2, 500);
 
   // 2. 在庫フィードバックによる価格スキャン
   if (unsold > targetInventory) {
