@@ -14,10 +14,10 @@ export function runQuantumComputing() {
   for (let p of photons) {
     totalOpacity += parseFloat(window.getComputedStyle(p).opacity);
   }
-  
-  const thresholdRatio = 0.65; 
+
+  const thresholdRatio = 0.65;
   const dynamicThreshold = nChips * thresholdRatio;
-  
+
   if (totalOpacity > dynamicThreshold) {
     safeClick("btnQcompute");
   }
