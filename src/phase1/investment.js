@@ -23,7 +23,6 @@ export function optimizeInvestment(funds, unsold, clipRate) {
     if (adCost && budget >= adCost) {
       safeClick("btnExpandMarketing");
     }
-    return; // Clipper購入をスキップ
   }
 
   // --- 通常投資：効率の高い方から購入 ---
