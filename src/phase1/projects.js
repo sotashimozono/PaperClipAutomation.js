@@ -28,11 +28,6 @@ export const ProjectManager = {
 
         if (isExcluded) {
           // 危険なプロジェクトはスキップ
-          if (projectName.includes("Temporal Reversion")) {
-            console.warn(
-              `[Project Guard] ⚠️ 危険なリセットプロジェクトを回避しました: ${projectName}`,
-            );
-          }
           continue;
         }
 

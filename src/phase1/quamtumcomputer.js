@@ -13,8 +13,7 @@ export function runQuantumComputing() {
   for (let p of photons) {
     totalOpacity += parseFloat(window.getComputedStyle(p).opacity);
   }
-
-  if (totalOpacity > 0) {
+  if (totalOpacity > 5.0) {
     safeClick("btnQcompute");
   }
 }
