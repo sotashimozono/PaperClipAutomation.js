@@ -2,7 +2,7 @@ import { safeClick } from "../core/utils.js";
 import { CONFIG } from "../core/config.js";
 
 let lastPriceChange = Date.now();
-const PRICE_COOLDOWN = 1500;
+const PRICE_COOLDOWN = CONFIG.MAIN_TICK / 2;
 
 /**
  * 在庫量に基づいた動的価格調整
