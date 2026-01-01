@@ -1,4 +1,5 @@
 import { runPhase1Logic } from "./phase1/main_phase1.js";
+import { startQuantumLoop } from "./phase1/quamtumcomputer.js";
 // import { runPhase2Logic } from './phase2/main_phase2.js';
 
 function mainEngine() {
@@ -21,7 +22,7 @@ export function init() {
   }, 10);
 
   window.mainLoopId = setInterval(mainEngine, 5000);
-
+  startQuantumLoop();
   console.log("PaperClip Automation: Dispatcher Engine Started.");
 }
 
