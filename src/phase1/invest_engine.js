@@ -14,7 +14,9 @@ export function runInvestEngine() {
 
   // 2. エンジンのアップグレード（Yomiを使用）
   // 3枚目の画像にある "Upgrade Investment Engine" ボタン
-  const upgradeCostMatch = document.getElementById("btnImproveInvestments")?.innerText.match(/([\d,]+)/);
+  const upgradeCostMatch = document
+    .getElementById("btnImproveInvestments")
+    ?.innerText.match(/([\d,]+)/);
   if (upgradeCostMatch) {
     const cost = parseInt(upgradeCostMatch[1].replace(/,/g, ""));
     if (yomi >= cost) {

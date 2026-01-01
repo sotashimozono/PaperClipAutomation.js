@@ -45,6 +45,9 @@ function activateTimeWarp(multiplier) {
   window.setInterval = function (fn, delay, ...args) {
     return originalSI(fn, delay / multiplier, ...args);
   };
-  
-  console.log(`%c[Time Warp] Speed set to ${multiplier}x`, "color: #ff00ff; font-weight: bold;");
+
+  console.log(
+    `%c[Time Warp] Speed set to ${multiplier}x`,
+    "color: #ff00ff; font-weight: bold;",
+  );
 }
