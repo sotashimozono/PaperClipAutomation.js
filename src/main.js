@@ -1,5 +1,5 @@
 import { runPhase1Logic } from "./phase1/main_phase1.js";
-import { startQuantumLoop } from "./phase1/quamtumcomputer.js";
+import { runQuantumComputing } from "./phase1/quamtumcomputer.js";
 // import { runPhase2Logic } from './phase2/main_phase2.js';
 
 function mainEngine() {
@@ -15,6 +15,7 @@ function mainEngine() {
 export function init() {
   if (window.mainLoopId) clearInterval(window.mainLoopId);
   if (window.clickLoopId) clearInterval(window.clickLoopId);
+  if (window.quantumLoopId) clearInterval(window.quantumLoopId);
 
   window.clickLoopId = setInterval(() => {
     const btn = document.getElementById("btnMakePaperclip");
@@ -22,7 +23,7 @@ export function init() {
   }, 10);
 
   window.mainLoopId = setInterval(mainEngine, 5000);
-  window.quantumLoopId = startQuantumLoop();
+  window.quantumLoopId = setInterval(runQuantumComputing, CONFIG.CLICK_TICK);
   console.log("PaperClip Automation: Dispatcher Engine Started.");
 }
 

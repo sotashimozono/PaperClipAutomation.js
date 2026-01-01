@@ -20,12 +20,3 @@ export function runQuantumComputing() {
   }
 }
 
-export function startQuantumLoop() {
-  // すでに動いている場合は停止
-  if (window.quantumLoopId) clearInterval(window.quantumLoopId);
-
-  // 100ms(0.1秒)間隔で量子計算をチェック
-  window.quantumLoopId = setInterval(() => {
-    runQuantumComputing();
-  }, CONFIG.CLICK_TICK);
-}
