@@ -14,7 +14,7 @@ export function runQuantumComputing() {
   for (let chip of chips) {
     // インラインスタイルの opacity を直接取得
     const opacity = parseFloat(chip.style.opacity);
-    
+
     // 修正：opacity が 0 以外のものを「計算に参加しているチップ」と判定
     // 浮動小数点の誤差を考慮し、微小値より大きいかどうかで判定します
     if (!isNaN(opacity) && Math.abs(opacity) > 0.0001) {
@@ -33,7 +33,10 @@ export function runQuantumComputing() {
     const btn = document.getElementById("btnQcompute");
     if (btn && !btn.disabled) {
       btn.click();
-      console.log(`%c[Quantum] Peak hit: ${totalAmplitude.toFixed(2)} / N=${activeCount}`, "color: #00ff00; font-weight: bold;");
+      console.log(
+        `%c[Quantum] Peak hit: ${totalAmplitude.toFixed(2)} / N=${activeCount}`,
+        "color: #00ff00; font-weight: bold;",
+      );
     }
   }
 }
