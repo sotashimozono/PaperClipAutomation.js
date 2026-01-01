@@ -1,5 +1,5 @@
 import { getValSafe, safeClick } from "../core/utils.js";
-import { CONST } from "../core/const.js";
+import { CONST } from "../core/config.js";
 
 /**
  * 資金の分配最適化
