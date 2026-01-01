@@ -16,13 +16,14 @@ export function optimizeInvestment(funds, unsold, clipRate) {
   if (budget <= 0) return;
 
   // 在庫が生産速度の5秒分を超えているなら、需要喚起（Marketing）のみ許可
-  let targetInventory = (clipRate * CONFIG.MAIN_TICK) / 1000;
+  let targetInventory = (clipRate * CONFIG.MAIN_TICK * 5) / 1000;
   const isSupplyOverwhelming = unsold > targetInventory;
 
   if (isSupplyOverwhelming) {
     if (adCost && budget >= adCost) {
       safeClick("btnExpandMarketing");
     }
+    return;
   }
 
   // --- 通常投資：効率の高い方から購入 ---
