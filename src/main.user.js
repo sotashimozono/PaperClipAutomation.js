@@ -15,10 +15,12 @@
   import(prodUrl)
     .then((module) => {
       // module.init が存在するか確認して実行
-      if (typeof module.init === 'function') {
+      if (typeof module.init === "function") {
         module.init();
       } else {
-        console.error("module.init が見つかりません。export されているか確認してください。");
+        console.error(
+          "module.init が見つかりません。export されているか確認してください。",
+        );
       }
     })
     .catch((err) => {
