@@ -5,7 +5,7 @@
   "main": "src/main.js",
   "scripts": {
     "format": "prettier --write 'src/**/*.js'",
-    "docs": "jsdoc src/*.js -d docs"
+    "docs": "jsdoc -r src/*.js -d docs"
   },
   "devDependencies": {
     "jsdoc": "^4.0.2",

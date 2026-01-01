@@ -1,26 +1,36 @@
 name: Format Fix
-on:
-  pull_request:
-    paths: ['**/*.js']
 
-permissions:
-  contents: write
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  format-fix:
+  format:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v6
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
-      - uses: actions/setup-node@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
       - name: Run Prettier
-        run: |
-          npm install
-          npm run format
+        run: npx prettier --write .
+
       - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v7
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "🤖 Format code (Prettier)"
+          commit_message: "style: auto format with prettier"
+          branch: ${{ github.head_ref || github.ref_name }}
