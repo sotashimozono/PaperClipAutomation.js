@@ -1,4 +1,5 @@
 import { getValSafe, safeClick } from "../core/utils.js";
+import { CONST } from "../core/const.js";
 
 /**
  * 資金の分配最適化
@@ -10,12 +11,14 @@ export function optimizeInvestment(funds, unsold, clipRate) {
   const clipperCost = getValSafe("clipperCost");
 
   // 針金代（安全マージン）を確保
-  let budget = funds - wireCost * 10;
+  let wireReserve = CONST.MAIN_TICK / 1000 * wireCost * 2;
+  let budget = funds - wireReserve;
   if (budget <= 0) return;
 
   // --- 門番ロジック：供給過剰の判定 ---
   // 在庫が生産速度の5秒分を超えているなら、需要喚起（Marketing）のみ許可
-  const isSupplyOverwhelming = unsold > clipRate * 5;
+  let targetInventory = clipRate * CONST.MAIN_TICK / 1000;
+  const isSupplyOverwhelming = unsold > targetInventory;
 
   if (isSupplyOverwhelming) {
     if (adCost && budget >= adCost) {
