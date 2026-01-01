@@ -43,7 +43,7 @@ export async function runTrustLogic() {
 
     if (!canMem && !canProc) break;
 
-    if (canMem && currentMaxOps < minRequired) {
+    if (canMem && (currentMaxOps < minRequired)) {
       btnMem.click();
       currentMaxOps += 1000;
       console.log(`[Trust] Memory -> Target: ${minRequired}`);
