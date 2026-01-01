@@ -9,7 +9,7 @@ import { ProjectManager } from "./projects.js";
 export function runPhase1Logic() {
   const unsold = getValSafe("unsoldClips");
   const demand = getValSafe("demand");
-  const clipRate = getValSafe("clipRate");
+  const clipRate = getValSafe("clipmakerRate");
   const funds = getFundsSafe();
   const wire = getValSafe("wire");
   const wireCost = getValSafe("wireCost");
