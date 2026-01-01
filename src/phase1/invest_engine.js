@@ -6,10 +6,10 @@ import { getValSafe, safeClick, getFundsSafe } from "../core/utils.js";
 export function runInvestEngine() {
   const funds = getFundsSafe();
   const investCash = getValSafe("investmentBankroll");
-  
+
   // 1. 所持 Yomi と アップグレードコストを正しく取得
-  const currentYomi = getValSafe("yomiDisplay"); 
-  const upgradeCost = getValSafe("investUpgradeCost"); 
+  const currentYomi = getValSafe("yomiDisplay");
+  const upgradeCost = getValSafe("investUpgradeCost");
 
   // 資金を投資に回す
   if (funds > 1000) {
