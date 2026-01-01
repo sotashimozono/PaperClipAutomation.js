@@ -2,7 +2,7 @@ export const CONFIG = {
   MAIN_TICK: 2000,
   CLICK_TICK: 10,
   WIRE_RESERVE: 500,
-  SAFE_PRICE_FLOOR: 0.05,
+  SAFE_PRICE_FLOOR: 0.02,
   // marketing related configs
   MARKETING_MIN_LEVEL: 1,
   MAX_UNSOLD_THRESHOLD: 5000,
