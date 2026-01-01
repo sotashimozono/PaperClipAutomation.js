@@ -1,3 +1,4 @@
+import { CONFIG } from "./core/config.js";
 import { runPhase1Logic } from "./phase1/main_phase1.js";
 import { runQuantumComputing } from "./phase1/quamtumcomputer.js";
 // import { runPhase2Logic } from './phase2/main_phase2.js';

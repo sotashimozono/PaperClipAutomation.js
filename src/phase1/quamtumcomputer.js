@@ -1,5 +1,4 @@
-import { safeClick } from "./utils.js";
-import { CONFIG } from "../core/config.js";
+import { safeClick } from "../core/utils.js";
 
 /**
  * 量子計算の自動クリック
