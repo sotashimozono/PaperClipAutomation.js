@@ -1,0 +1,14 @@
+{
+  "name": "paperclip-automation",
+  "version": "0.1.0",
+  "description": "Universal Paperclips automation solver",
+  "main": "src/main.js",
+  "scripts": {
+    "format": "prettier --write 'src/**/*.js'",
+    "docs": "jsdoc src/*.js -d docs"
+  },
+  "devDependencies": {
+    "jsdoc": "^4.0.2",
+    "prettier": "^3.1.0"
+  }
+}
