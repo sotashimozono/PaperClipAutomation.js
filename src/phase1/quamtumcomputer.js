@@ -18,7 +18,7 @@ export function runQuantumComputing() {
   const thresholdRatio = 0.65;
   const dynamicThreshold = nChips * thresholdRatio;
 
-  if (totalOpacity > 0.80) {
+  if (totalOpacity > 0.8) {
     safeClick("btnQcompute");
   }
 }
