@@ -11,13 +11,13 @@ export function optimizeInvestment(funds, unsold, clipRate) {
   const clipperCost = getValSafe("clipperCost");
 
   // 針金代（安全マージン）を確保
-  let wireReserve = CONST.MAIN_TICK / 1000 * wireCost * 2;
+  let wireReserve = (CONST.MAIN_TICK / 1000) * wireCost * 2;
   let budget = funds - wireReserve;
   if (budget <= 0) return;
 
   // --- 門番ロジック：供給過剰の判定 ---
   // 在庫が生産速度の5秒分を超えているなら、需要喚起（Marketing）のみ許可
-  let targetInventory = clipRate * CONST.MAIN_TICK / 1000;
+  let targetInventory = (clipRate * CONST.MAIN_TICK) / 1000;
   const isSupplyOverwhelming = unsold > targetInventory;
 
   if (isSupplyOverwhelming) {
