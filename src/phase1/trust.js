@@ -1,23 +1,33 @@
 import { sleep } from "../core/utils.js";
+import { ProjectManager } from "./projects.js";
 
 function getMinRequiredOps() {
   const projects = document.getElementsByClassName("projectButton");
   let minOps = Infinity;
   let found = false;
+
   for (let btn of projects) {
     if (btn.style.display !== "none") {
       const text = btn.innerText;
+
+      // 1. ProjectManager の除外リストにあるかチェック
+      const isExcluded = ProjectManager.excludeList.some((ex) => text.includes(ex));
+      if (isExcluded) continue;
+
+      // 2. Ops の数値を抽出
       const match = text.match(/([\d,]+)\s+ops/);
       if (match) {
         const ops = parseInt(match[1].replace(/,/g, ""));
-        if (ops < minOps) {
+
+        // 3. 正の数値であり、かつ最小値であれば更新
+        // (-10,000 などの負の値はここで弾かれます)
+        if (ops > 0 && ops < minOps) {
           minOps = ops;
           found = true;
         }
       }
     }
   }
-  return found ? minOps : 1000;
 }
 
 export async function runTrustLogic() {
