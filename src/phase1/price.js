@@ -1,5 +1,5 @@
 import { safeClick } from '../core/utils.js';
-import { PAPERS_CONFIG } from '../core/config.js';
+import { CONFIG } from '../core/config.js';
 
 let lastPriceChange = Date.now();
 const PRICE_COOLDOWN = 1500;
@@ -23,7 +23,7 @@ export function optimize_price(unsold, demand, clipRate, funds, wireCost) {
     // 2. 在庫フィードバックによる価格スキャン
     if (unsold > targetInventory * 2) {
         // 在庫過多：需要不足。価格を下げて J_out を増やす
-        if (currentPrice > PAPERS_CONFIG.SAFE_PRICE_FLOOR) {
+        if (currentPrice > CONFIG.SAFE_PRICE_FLOOR) {
             if (safeClick('btnLowerPrice')) {
                 lastPriceChange = now;
                 console.log(`[Price] Down: Inventory(${unsold}) is too high.`);

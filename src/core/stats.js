@@ -1,4 +1,4 @@
-import { PAPERS_CONFIG } from './config.js';
+import { CONFIG } from './config.js';
 
 export const historyStats = {
     lastUnsold: 0,
@@ -6,7 +6,7 @@ export const historyStats = {
     salesVelocity: 0,
     update: function(currentUnsold, clipRate) {
         const now = Date.now();
-        const dt = (now - this.lastTime) / PAPERS_CONFIG.MAIN_TICK;
+        const dt = (now - this.lastTime) / CONFIG.MAIN_TICK;
         if (dt > 0) {
             const dInventory = currentUnsold - this.lastUnsold;
             // J_out = J_in - d(Inventory)/dt

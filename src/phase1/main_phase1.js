@@ -1,5 +1,5 @@
 import { getValSafe, safeClick, getFundsSafe } from '../core/utils.js';
-import { PAPERS_CONFIG } from '../core/config.js';
+import { CONFIG } from '../core/config.js';
 
 import { optimize_price } from './price.js';
 import { optimizeInvestment } from './investment.js';
@@ -14,7 +14,7 @@ export function runPhase1Logic() {
     const wire = getValSafe('wire');
     const wireCost = getValSafe('wireCost');
 
-    if (wire !== null && wire < PAPERS_CONFIG.WIRE_RESERVE && funds >= wireCost) {
+    if (wire !== null && wire < CONFIG.WIRE_RESERVE && funds >= wireCost) {
         safeClick('btnBuyWire');
     }
 
