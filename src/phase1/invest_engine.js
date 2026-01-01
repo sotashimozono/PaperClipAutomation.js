@@ -42,15 +42,11 @@ export function runStrategicModeling() {
   const stratDiv = document.getElementById("strategicModelingContainer");
   if (!stratDiv || stratDiv.style.display === "none") return;
 
-  // 1. 戦略を 'TIT FOR TAT'（しっぺ返し戦略）に固定
   // これが最も安定して Yomi を稼げます
   const picker = document.getElementById("stratPicker");
   if (picker) {
-    // まだ TIT FOR TAT がない場合は GREEDY (強欲) を選択
-    // 解放されたら "1" (TIT FOR TAT) に切り替えるのが効率的です
     if (picker.value === "10") {
-      // 10 はデフォルトの "Pick a Strat"
-      picker.value = "GREEDY";
+      picker.value = "1";
     }
   }
   // 2. トーナメントの実行
@@ -58,6 +54,7 @@ export function runStrategicModeling() {
   const newTournBtn = document.getElementById("btnNewTournament");
   if (newTournBtn && !newTournBtn.disabled) {
     newTournBtn.click();
+    document.getElementById("btnRunTournament").click();
     console.log("[Yomi] Started New Tournament");
   }
 }
