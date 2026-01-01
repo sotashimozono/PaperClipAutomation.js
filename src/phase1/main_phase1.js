@@ -5,6 +5,7 @@ import { optimize_price } from "./price.js";
 import { optimizeInvestment } from "./investment.js";
 import { runTrustLogic } from "./trust.js";
 import { ProjectManager } from "./projects.js";
+import { runInvestEngine } from "./invest_engine.js";
 
 export function runPhase1Logic() {
   const unsold = getValSafe("unsoldClips");
@@ -22,4 +23,5 @@ export function runPhase1Logic() {
     safeClick("btnBuyWire");
   }
   optimize_price(unsold, demand, clipRate, funds, wireCost);
+  runInvestEngine();
 }
