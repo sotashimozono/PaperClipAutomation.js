@@ -11,7 +11,9 @@ function getMinRequiredOps() {
       const text = btn.innerText;
 
       // 1. ProjectManager の除外リストにあるかチェック
-      const isExcluded = ProjectManager.excludeList.some((ex) => text.includes(ex));
+      const isExcluded = ProjectManager.excludeList.some((ex) =>
+        text.includes(ex),
+      );
       if (isExcluded) continue;
 
       // 2. Ops の数値を抽出
