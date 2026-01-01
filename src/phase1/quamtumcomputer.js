@@ -8,12 +8,17 @@ export function runQuantumComputing() {
   if (!qComp || qComp.style.display === "none") return;
 
   const photons = qComp.getElementsByClassName("qChip");
+  const nChips = photons.length;
   let totalOpacity = 0;
 
   for (let p of photons) {
     totalOpacity += parseFloat(window.getComputedStyle(p).opacity);
   }
-  if (totalOpacity > 0.5) {
+  
+  const thresholdRatio = 0.65; 
+  const dynamicThreshold = nChips * thresholdRatio;
+  
+  if (totalOpacity > dynamicThreshold) {
     safeClick("btnQcompute");
   }
 }
