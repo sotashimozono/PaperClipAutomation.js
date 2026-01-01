@@ -27,4 +27,3 @@ export function init() {
 }
 
 window.PaperClipAutomation = { init };
-
