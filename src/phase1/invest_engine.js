@@ -25,7 +25,7 @@ export function runInvestEngine() {
   // 3. リスク管理
   const stratSelect = document.getElementById("investStrat");
   if (stratSelect && investCash > 1000000) {
-    stratSelect.value = "high"; // 100万ドル超えたらハイリスクへ
+    stratSelect.value = "hi"; // 100万ドル超えたらハイリスクへ
   }
 }
 /**
