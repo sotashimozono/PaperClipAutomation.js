@@ -1,25 +1,25 @@
-import { getValSafe, safeClick, getFundsSafe } from '../core/utils.js';
-import { CONFIG } from '../core/config.js';
+import { getValSafe, safeClick, getFundsSafe } from "../core/utils.js";
+import { CONFIG } from "../core/config.js";
 
-import { optimize_price } from './price.js';
-import { optimizeInvestment } from './investment.js';
-import { runTrustLogic } from './trust.js';
-import { ProjectManager } from './projects.js';
+import { optimize_price } from "./price.js";
+import { optimizeInvestment } from "./investment.js";
+import { runTrustLogic } from "./trust.js";
+import { ProjectManager } from "./projects.js";
 
 export function runPhase1Logic() {
-    const unsold = getValSafe('unsoldClips');
-    const demand = getValSafe('demand');
-    const clipRate = getValSafe('clipRate');
-    const funds = getFundsSafe();
-    const wire = getValSafe('wire');
-    const wireCost = getValSafe('wireCost');
+  const unsold = getValSafe("unsoldClips");
+  const demand = getValSafe("demand");
+  const clipRate = getValSafe("clipRate");
+  const funds = getFundsSafe();
+  const wire = getValSafe("wire");
+  const wireCost = getValSafe("wireCost");
 
-    if (wire !== null && wire < CONFIG.WIRE_RESERVE && funds >= wireCost) {
-        safeClick('btnBuyWire');
-    }
+  if (wire !== null && wire < CONFIG.WIRE_RESERVE && funds >= wireCost) {
+    safeClick("btnBuyWire");
+  }
 
-    optimize_price(unsold, demand, clipRate, funds, wireCost);
-    runTrustLogic();
-    optimizeInvestment(funds, unsold, clipRate);
-    ProjectManager.executeAll();
+  optimize_price(unsold, demand, clipRate, funds, wireCost);
+  runTrustLogic();
+  optimizeInvestment(funds, unsold, clipRate);
+  ProjectManager.executeAll();
 }
