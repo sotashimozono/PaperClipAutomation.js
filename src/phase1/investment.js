@@ -28,7 +28,7 @@ export function optimizeInvestment(funds, unsold, clipRate) {
 
   // --- 通常投資：効率の高い方から購入 ---
   if (megaCost && budget >= megaCost) {
-    safeClick("btnBuyMegaClipper");
+    safeClick("btnMakeMegaClipper");
   } else if (clipperCost && budget >= clipperCost) {
     safeClick("btnMakeClipper");
   }
