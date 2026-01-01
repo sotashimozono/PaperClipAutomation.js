@@ -10,7 +10,7 @@ export const safeClick = (id) => {
 export const getValSafe = (id) => {
   const el = document.getElementById(id);
   if (!el) return 0;
-  const val = parseFloat(el.innerText.replace(/[^0-9.]/g, ''));
+  const val = parseFloat(el.innerText.replace(/[^0-9.]/g, ""));
   return isNaN(val) ? 0 : val;
 };
 
